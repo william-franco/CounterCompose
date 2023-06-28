@@ -1,9 +1,6 @@
 package br.com.williamfranco.countercompose.src.features.counter.view_models
 
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.*
 
 interface CounterViewModel {
     val counter: StateFlow<Int>

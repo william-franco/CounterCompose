@@ -5,18 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
 
-import br.com.williamfranco.countercompose.src.features.counter.view_models.*
-import br.com.williamfranco.countercompose.src.features.counter.views.*
+import br.com.williamfranco.countercompose.src.routes.NavigationGraph
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val counterViewModel: CounterViewModel = CounterViewModelImpl()
-
         setContent {
             MaterialTheme {
-                CounterView(counterViewModel)
+                NavigationGraph()
             }
         }
     }

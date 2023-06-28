@@ -1,33 +1,25 @@
 package br.com.williamfranco.countercompose.src.features.counter.views
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
+import androidx.compose.material.icons.filled.*
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.material3.*
 
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.*
+
+import androidx.compose.ui.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 import br.com.williamfranco.countercompose.src.features.counter.view_models.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CounterView(counterViewModel: CounterViewModel) {
+fun CounterView(counterViewModel: CounterViewModel, navController: NavController) {
     val counterState by counterViewModel.counter.collectAsState()
 
     Scaffold(
@@ -36,6 +28,13 @@ fun CounterView(counterViewModel: CounterViewModel) {
                 title = {
                     Text(text = "Counter")
                 },
+                actions = {
+                    IconButton(
+                        onClick = { navController.navigate("settingView") }
+                    ) {
+                        Icon(Icons.Default.Settings, contentDescription = "Settings")
+                    }
+                }
             )
         },
         content = {padding ->
@@ -52,7 +51,7 @@ fun CounterView(counterViewModel: CounterViewModel) {
             FloatingActionButton(
                 onClick = { counterViewModel.increment() },
             ) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = "Add")
+                Icon(Icons.Default.Add, contentDescription = "Add")
             }
         }
     )
@@ -63,5 +62,7 @@ fun CounterView(counterViewModel: CounterViewModel) {
 fun DefaultPreview() {
     val counterViewModel: CounterViewModel = CounterViewModelImpl()
 
-    CounterView(counterViewModel)
+    val navController = rememberNavController()
+
+    CounterView(counterViewModel, navController)
 }
