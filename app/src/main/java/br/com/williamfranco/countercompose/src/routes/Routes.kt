@@ -11,7 +11,7 @@ import br.com.williamfranco.countercompose.src.features.settings.view_models.*
 import br.com.williamfranco.countercompose.src.features.settings.views.SettingView
 
 @Composable
-fun NavigationGraph() {
+fun NavigationApp() {
     val counterViewModel: CounterViewModel = CounterViewModelImpl()
     val settingViewModel: SettingViewModel = SettingViewModelImpl()
 

@@ -54,7 +54,7 @@ fun SettingView(settingViewModel: SettingViewModel, navController: NavController
                     Spacer(modifier = Modifier.weight(1f))
                     Switch(
                         checked = settingState,
-                        onCheckedChange = { isChecked -> settingViewModel.changeTheme(isChecked) }
+                        onCheckedChange = { isChecked -> settingViewModel.updateTheme(isChecked) }
                     )
                 }
             }

@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
 
-import br.com.williamfranco.countercompose.src.routes.NavigationGraph
+import br.com.williamfranco.countercompose.src.routes.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             MaterialTheme {
-                NavigationGraph()
+                NavigationApp()
             }
         }
     }
