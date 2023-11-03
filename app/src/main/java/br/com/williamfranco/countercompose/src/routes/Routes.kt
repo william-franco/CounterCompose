@@ -11,21 +11,21 @@ import br.com.williamfranco.countercompose.src.features.settings.view_models.*
 import br.com.williamfranco.countercompose.src.features.settings.views.SettingView
 
 @Composable
-fun NavigationApp() {
+fun RoutesApp() {
+    val navController = rememberNavController()
+
     val counterViewModel: CounterViewModel = CounterViewModelImpl()
     val settingViewModel: SettingViewModel = SettingViewModelImpl()
-
-    val navController = rememberNavController()
 
     NavHost(
         navController = navController,
         startDestination = "counterView"
     ) {
         composable("counterView") {
-            CounterView(counterViewModel, navController)
+            CounterView(navController, counterViewModel)
         }
         composable("settingView") {
-            SettingView(settingViewModel, navController)
+            SettingView(navController, settingViewModel)
         }
     }
 }

@@ -1,17 +1,20 @@
 package br.com.williamfranco.countercompose.src.features.settings.view_models
 
+import br.com.williamfranco.countercompose.src.features.settings.models.*
+
 import kotlinx.coroutines.flow.*
 
 interface SettingViewModel {
-    val isDarkTheme: StateFlow<Boolean>
+    val isDarkTheme: StateFlow<ThemeModel>
     fun updateTheme(isDark: Boolean)
 }
 
 class SettingViewModelImpl : SettingViewModel {
-    private val _isDarkTheme = MutableStateFlow(false)
-    override val isDarkTheme: StateFlow<Boolean> = _isDarkTheme.asStateFlow()
+    private val _isDarkTheme = MutableStateFlow(ThemeModel(false))
+    override val isDarkTheme: StateFlow<ThemeModel> = _isDarkTheme.asStateFlow()
 
     override fun updateTheme(isDark: Boolean) {
-        _isDarkTheme.update { isDark }
+        _isDarkTheme.value = ThemeModel(isDark)
     }
 }
+

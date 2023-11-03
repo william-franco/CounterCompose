@@ -12,5 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Counter Compose"
-include ':app'
+
+rootProject.name = "CounterCompose"
+include(":app")

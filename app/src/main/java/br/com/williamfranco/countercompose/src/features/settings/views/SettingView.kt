@@ -1,27 +1,21 @@
 package br.com.williamfranco.countercompose.src.features.settings.views
 
 import androidx.compose.foundation.layout.*
-
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-
 import androidx.compose.material3.*
-
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 
 import br.com.williamfranco.countercompose.src.features.settings.view_models.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingView(settingViewModel: SettingViewModel, navController: NavController) {
+fun SettingView(navController: NavController, settingViewModel: SettingViewModel) {
     val settingState by settingViewModel.isDarkTheme.collectAsState()
 
     Scaffold(
@@ -53,21 +47,11 @@ fun SettingView(settingViewModel: SettingViewModel, navController: NavController
                     Text("Dark theme", color = Color.Black)
                     Spacer(modifier = Modifier.weight(1f))
                     Switch(
-                        checked = settingState,
+                        checked = settingState.isDark,
                         onCheckedChange = { isChecked -> settingViewModel.updateTheme(isChecked) }
                     )
                 }
             }
         }
     )
-}
-
-@Preview
-@Composable
-fun DefaultPreview() {
-    val settingViewModel: SettingViewModel = SettingViewModelImpl()
-
-    val navController = rememberNavController()
-
-    SettingView(settingViewModel, navController)
 }

@@ -1,6 +1,6 @@
 # CounterCompose
 
-Counter app using kotlin and jetpack compose.
+Counter app like flutter app using kotlin and jetpack compose.
 
 
 ## Author
