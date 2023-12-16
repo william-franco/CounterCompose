@@ -7,6 +7,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.compose.*
 import androidx.navigation.NavController
 
 import br.com.williamfranco.countercompose.src.features.counter.view_models.*
@@ -14,7 +15,7 @@ import br.com.williamfranco.countercompose.src.features.counter.view_models.*
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CounterView(navController: NavController, counterViewModel: CounterViewModel) {
-    val counterState by counterViewModel.counter.collectAsState()
+    val counterState by counterViewModel.counter.collectAsStateWithLifecycle()
 
     Scaffold(
         topBar = {
